@@ -11,16 +11,37 @@ struct Home: View {
     
     @State var dotState: DotState = .normal
     @State var dotScale: CGFloat = 1
+    @State var dotRotation : Double = 0
+    
+    @State var isAnimating = false
     var body: some View {
         ZStack {
-            Color("Gold")
+            ZStack {
+                (dotState == .normal ? Color("Gold") : Color("Grey"))
+                if dotState == .normal {
+                    MinimisedView()
+                }
+                else {
+                    ExpandedView()
+                }
+                
+            }
+            .animation(.none, value: dotState)
             
             Rectangle()
-                .fill(Color("Grey"))
+                .fill(dotState != .normal ? Color("Gold") : Color("Grey"))
                 .overlay(
                 
-                    ExpandedView()
+                    ZStack {
+                        if dotState != .normal {
+                            MinimisedView()
+                        }
+                        else {
+                            ExpandedView()
+                        }
+                    }
                 )
+                .animation(.none, value: dotState)
                 .mask(
                 
                     GeometryReader{proxy in
@@ -28,6 +49,7 @@ struct Home: View {
                             
                             .frame(width: 100, height: 100)
                             .scaleEffect(dotScale)
+                            .rotation3DEffect(.init(degrees: dotRotation), axis: (x: 0, y: 1, z: 0), anchorZ: dotState == .flipped ? -10 : 10, perspective: 1)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                             .offset(y: -60)
                         
@@ -36,10 +58,48 @@ struct Home: View {
             Circle()
                 .foregroundColor(Color.black.opacity(0.01))
                 .frame(width: 100, height: 100)
+                .overlay(
+                Image(systemName: "chevron.right")
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .opacity(isAnimating ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.4), value: isAnimating)
+                     
+                )
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+
                 .onTapGesture(perform: {
-                    withAnimation(.linear(duration: 1.5)){
-                        dotScale = 8
+                    if isAnimating{return}
+                    isAnimating = true
+                    if dotState == .flipped {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.725) {
+                            withAnimation(.linear(duration: 0.7)){
+                               // dotRotation = -180
+                                dotScale = 1
+                                dotState = .normal
+                            }
+                        }
+                            withAnimation(.linear(duration: 1.5)){
+                                dotRotation = 0
+                                dotScale = 8
+                            }
+
+                    }
+                else{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.725) {
+                        withAnimation(.linear(duration: 0.7)){
+                           // dotRotation = -180
+                            dotScale = 1
+                            dotState = .flipped
+                        }
+                    }
+                        withAnimation(.linear(duration: 1.5)){
+                            dotRotation = -180
+                            dotScale = 8
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+                        isAnimating = false
                     }
                 })
                 .offset(y: -60)
