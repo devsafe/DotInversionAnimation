@@ -27,6 +27,8 @@ struct Home: View {
                         Circle()
                             
                             .frame(width: 100, height: 100)
+                            .scaleEffect(dotScale)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                         
                     }
                 )
