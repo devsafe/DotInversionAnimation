@@ -27,9 +27,22 @@ struct Home: View {
                         Circle()
                             
                             .frame(width: 100, height: 100)
+                            .scaleEffect(dotScale)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                            .offset(y: -60)
                         
                     }
                 )
+            Circle()
+                .foregroundColor(Color.black.opacity(0.01))
+                .frame(width: 100, height: 100)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                .onTapGesture(perform: {
+                    withAnimation(.linear(duration: 1.5)){
+                        dotScale = 8
+                    }
+                })
+                .offset(y: -60)
         }
         .ignoresSafeArea()
     }
