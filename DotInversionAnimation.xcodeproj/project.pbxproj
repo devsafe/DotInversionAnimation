@@ -11,7 +11,7 @@
 		11DC55C6270B3E420073242F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC55C5270B3E420073242F /* ContentView.swift */; };
 		11DC55C8270B3E440073242F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11DC55C7270B3E440073242F /* Assets.xcassets */; };
 		11DC55CB270B3E440073242F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11DC55CA270B3E440073242F /* Preview Assets.xcassets */; };
-		11DC55D3270B3EF80073242F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC55D2270B3EF80073242F /* Home.swift */; };
+		11DC55D5270B3FB40073242F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC55D4270B3FB40073242F /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		11DC55C5270B3E420073242F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		11DC55C7270B3E440073242F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11DC55CA270B3E440073242F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		11DC55D2270B3EF80073242F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		11DC55D4270B3FB40073242F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 		11DC55D1270B3EDD0073242F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				11DC55D2270B3EF80073242F /* Home.swift */,
+				11DC55D4270B3FB40073242F /* Home.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,7 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11DC55C6270B3E420073242F /* ContentView.swift in Sources */,
-				11DC55D3270B3EF80073242F /* Home.swift in Sources */,
+				11DC55D5270B3FB40073242F /* Home.swift in Sources */,
 				11DC55C4270B3E420073242F /* DotInversionAnimationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
