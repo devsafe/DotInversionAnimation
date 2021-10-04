@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct Home: View {
+    
+    @State var dotState: DotState = .normal
+    @State var dotScale: CGFloat = 1
     var body: some View {
         ZStack {
             Color("Gold")
             
-            ExpandedView()
+            Rectangle()
+                .fill(Color("Grey"))
+                .overlay(
+                
+                    ExpandedView()
+                )
+                .mask(
+                
+                    GeometryReader{proxy in
+                        Circle()
+                            
+                            .frame(width: 100, height: 100)
+                        
+                    }
+                )
         }
         .ignoresSafeArea()
     }
@@ -45,4 +62,10 @@ struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()
     }
+}
+
+
+enum DotState {
+    case normal
+    case flipped
 }
